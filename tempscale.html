@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temperature scale</title>
+    <style>
+        h1{
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: 70px;
+        }
+        #box{
+            background-color:rgb(126, 126, 255);
+            display:grid;
+            justify-content:center;
+            border-radius: 15px;
+        }
+        h2{
+            font-size: 50px;
+        }
+        input{
+            font-size: 45px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Temperature Scale Converter</h1>
+    <div id="box">
+    <h2 font-size="100px">Celsius</h2><input type="number" id="celsius" placeholder="Enter Celsius">
+    <h2 font-size="100px">fahrenheit</h2><input type="number" id="fahrenheit" placeholder="Enter fahrenheit">
+    <h2 font-size="100px">kelvin</h2><input type="number" id="kelvin" placeholder="Enter kelvin">
+    <br><br>
+    </div>
+    <script>
+        let celsius = document.getElementById("celsius");
+        let fahrenheit = document.getElementById("fahrenheit");
+        let kelvin = document.getElementById("kelvin");
+
+        celsius.addEventListener("input",()=>{
+           fahrenheit.value =(celsius.value * 9/5)+32;
+           kelvin.value = (celsius.value*1) + 273.15;
+           if(celsius.value === ""){
+            fahrenheit.value = "";
+            kelvin.value = "";
+           }
+        })
+
+        fahrenheit.addEventListener("input",()=>{
+            celsius.value = (fahrenheit.value-32)*5/9;
+            kelvin.value = (fahrenheit.value-32)*5/9+273.15;
+            if(fahrenheit.value === ""){
+                celsius.value = "";
+                kelvin.value = "";
+            }
+        })
+
+        kelvin.addEventListener("input",()=>{
+            celsius.value = kelvin.value-273.15;
+            fahrenheit.value = (kelvin.value-273.15)*9/5+32;
+            if(kelvin.value === ""){
+                celsius.value = "";
+                fahrenheit.value = "";
+            }
+        })
+
+
+    </script>
+</body>
+</html>
